@@ -1,0 +1,23 @@
+# Files of Description Proyect
+arquitecture.md
+dev_requirements.md
+system_analyts_prompt.md
+
+# Virtual Env
+virtual-env/
+venv/
+env/
+
+# Python Cache
+__pycache__/
+*.py[cod]
+
+# DataBase
+*.sqlite3
+*.db
+
+# File Configuration of VsCode
+.vscode/
+
+# Envs
+.env
