@@ -8,8 +8,8 @@ import os
 # Load Envs
 load_dotenv()
 
-# Get Route to Databse
-DB_URL = os.getenv("DATABASE_URL")
+# Get Route to Databse (CHANGE TO "DATABASE_URL_MYSQL FOR PRODUCTION")
+DB_URL = os.getenv("DATABASE_URL_SQLITE")
 
 
 """ Creation the sessions engine """
