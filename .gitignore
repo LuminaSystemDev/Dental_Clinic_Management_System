@@ -21,3 +21,6 @@ __pycache__/
 
 # Envs
 .env
+
+# AI
+.kilo
