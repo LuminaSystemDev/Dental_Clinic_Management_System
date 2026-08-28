@@ -13,6 +13,7 @@ class User(Base):
 
     # fields for User Model
     id : Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
+    role_id : Mapped[int] = mapped_column(Integer, ForeignKey("roles.id"), nullable=False)
     name : Mapped[str] = mapped_column(String(50), nullable=False) 
     last_name : Mapped[str] = mapped_column(String(50), nullable=False)
     email : Mapped[Optional[str]] = mapped_column(String(100), unique=True)
@@ -21,12 +22,12 @@ class User(Base):
     active : Mapped[bool] = mapped_column(Boolean, default=True)
     created_at : Mapped[datetime] = mapped_column(DateTime, default=func.now())
     updated_at : Mapped[datetime] = mapped_column(DateTime, default=func.now(), onupdate=func.now())
-
-    # Foreign key to Role model
-    role_id : Mapped[int] = mapped_column(Integer, ForeignKey("roles.id"), nullable=False)
-
+    
     # Relationship with Role model
     role: Mapped["Role"] = relationship("Role", back_populates="users")
 
+    # Relationship with Appointment model
+    appointments: Mapped[list["Appointment"]] = relationship("Appointment", back_populates="dentist")
+    
     def __repr__(self):
         return f"<User(id={self.id}, name='{self.name}', last_name='{self.last_name}', email='{self.email}', phone_number='{self.phone_number}', active={self.active}, created_at={self.created_at}, updated_at={self.updated_at})>"
