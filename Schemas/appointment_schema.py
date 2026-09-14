@@ -1,6 +1,6 @@
 from typing import Optional
 from datetime import datetime
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 
 """Appointment Schema"""
 
@@ -14,6 +14,8 @@ class AppointmentBase(BaseModel):
     shift: str
     status: str
     notes: Optional[str] = None
+
+    model_config = ConfigDict(from_attributes=True)
 
 # Schema for Appointment Create
 class AppointmentCreate(AppointmentBase):

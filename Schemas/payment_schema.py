@@ -1,5 +1,5 @@
 from datetime import datetime
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 
 """Payment Schema"""
 
@@ -12,6 +12,8 @@ class PaymentBase(BaseModel):
     payment_method : str
     payment_date : datetime
     payment_receipt : str
+
+    model_config = ConfigDict(from_attributes=True)
 
 # Schema for Payment Create
 class PaymentCreate(PaymentBase):

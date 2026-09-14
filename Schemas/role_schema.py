@@ -1,6 +1,6 @@
 from datetime import datetime
 from typing import Optional
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 
 """ Roles Schema """
 
@@ -9,6 +9,8 @@ class BaseRole(BaseModel):
     name: str
     description: Optional[str] = None
     active: Optional[bool] = True
+
+    model_config = ConfigDict(from_attributes=True)
 
 # Schema for Role Create
 class RoleCreate(BaseRole):

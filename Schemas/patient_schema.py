@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 from typing import Optional
 from datetime import datetime
 
@@ -16,6 +16,8 @@ class BasePatient(BaseModel):
     direction : Optional[str] = None
     medical_history : Optional[str] = None
     allergies : Optional[str] = None
+
+    model_config = ConfigDict(from_attributes=True)
 
 # Schema for Patient Create
 class PatientCreate(BasePatient):

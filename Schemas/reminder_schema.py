@@ -1,5 +1,5 @@
 from datetime import datetime
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 from typing import Optional
 
 """Reminder Schema"""
@@ -11,6 +11,8 @@ class ReminderBase(BaseModel):
     message: str 
     send_date: datetime
     sent: bool
+
+    model_config = ConfigDict(from_attributes=True)
 
 # Schema for Reminder Create
 class ReminderCreate(ReminderBase):

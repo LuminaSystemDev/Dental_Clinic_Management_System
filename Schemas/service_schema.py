@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 from datetime import datetime
 from typing import Optional
 
@@ -11,6 +11,8 @@ class ServiceBase(BaseModel):
     price: float
     duration_in_minutes: int
     active: Optional[bool] = True
+
+    model_config = ConfigDict(from_attributes=True)
 
 # Schema for Service Create
 class ServiceCreate(ServiceBase):
