@@ -2,9 +2,18 @@
 
 # Imports
 from fastapi import FastAPI
+from Routers.User import user_router
+from Routers.Auth import auth_user_router
 
 # API
-app = FastAPI()
+app = FastAPI(
+    title="Dental Clinic Management System",
+    description="RESTAPI FOR THE MANAGEMENT OF DENTAL CONSULTATIONS AND SERVICES",
+    )
+
+# Include Routers
+app.include_router(user_router)
+app.include_router(auth_user_router)
 
 # Principal Route
 @app.get("/")
